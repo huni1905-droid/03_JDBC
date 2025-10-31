@@ -55,6 +55,12 @@ public class CreateXMLFile {
 			}
 		}
 		
+		/*
+		 * 실행했는데 만들어진것 안 보이는 경우 
+		 * 상단 메뉴바 Window -> properties -> Generate -> Workspace 
+		 * -> 중상단에 "Refrsh using native hooks or polling" 체크 되었는지 확인
+		 * (프로젝트 안에서 파일 변경 일어나면 바로 업데이트 해주는 옵션)
+		*/ 
 		
 		
 	}

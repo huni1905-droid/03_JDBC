@@ -97,7 +97,7 @@ public class JDBCTemplate {
 	public static void rollback(Connection conn) {
 		
 		try {
-			if(conn != null && conn.isClosed()) conn.rollback();
+			if(conn != null && !conn.isClosed()) conn.rollback();
 			
 		} catch (Exception e) {
 			System.out.println("롤백 중 예외 발생");

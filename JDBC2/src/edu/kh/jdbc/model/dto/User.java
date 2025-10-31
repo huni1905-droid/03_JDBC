@@ -19,7 +19,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@NoArgsConstructor 	// 기본생성자
+@NoArgsConstructor 	// 기본생성자(No Argument,매개변수가 없다)
 @AllArgsConstructor // 모든 매개변수가 있는 생성자
 @ToString
 public class User {
