@@ -135,8 +135,42 @@ public class StudentView {
 
 			System.out.println("\n===== 3. 학생 정보(이름, 나이, 전공) 수정 =====\n");
 			
-			System.out.println();
+			System.out.print("학번 : ");
+			int inputNo = sc.nextInt();
+
+
+			System.out.print("이름 : ");
+			String inputName = sc.next();
 			
+
+			int stdNo = service.selectSdtNo(inputNo, inputName);
+
+
+			if(stdNo == 0) {
+
+				System.out.println("일치하는 학생이 없습니다");
+				return;
+
+			}
+
+			
+
+			System.out.print("수정할 학생의 이름 입력 : ");
+			String stdName = sc.next();
+
+			System.out.print("수정할 학생의 나이 입력 : ");
+			int stdAge = sc.nextInt();
+
+			System.out.print("수정할 학생의 전공 입력 : ");
+			String major = sc.next();
+			
+
+			int result = service.updateStd(inputNo, stdName, stdAge, major);
+			
+
+			if(result > 0) System.out.println("수정 성공!!!");
+			else		   System.out.println("수정 실패...");
+
 		}
 
 

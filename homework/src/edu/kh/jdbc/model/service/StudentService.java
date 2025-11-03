@@ -47,6 +47,46 @@ public class StudentService {
 		return stdList;
 	}
 
+	
+	
+	/** 3. 학생 정보(이름, 나이, 전공) 수정 서비스
+	 * @return
+	 */
+	public int selectSdtNo(int inputNo, String inputName) throws Exception{
+
+		Connection conn = JDBCTemplate.getConnection();
+
+
+		int stdNo = dao.selectStd(conn, inputNo, inputName);
+
+
+		JDBCTemplate.close(conn);
+
+
+		return stdNo;
+	}
+	
+	
+	
+	public int updateStd(int inputNo, String stdName, int stdAge, String major)  throws Exception{
+		
+		Connection conn = JDBCTemplate.getConnection();
+
+		int result = dao.updateStd(conn, inputNo, stdName, stdAge, major);
+
+		
+		if(result > 0) JDBCTemplate.commit(conn);
+
+		else		   JDBCTemplate.rollback(conn);
+
+		
+
+		JDBCTemplate.close(conn);
+
+		
+
+		return result;
+	}
 
 
 	/** 4. 한번 기준 학생 정보 삭제 서비스
@@ -89,5 +129,8 @@ public class StudentService {
 		
 		return stdList;
 	}
+
+
+
 
 }

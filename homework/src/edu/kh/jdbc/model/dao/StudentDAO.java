@@ -89,10 +89,88 @@ public class StudentDAO {
 		return stdList;
 	}
 
-	/** 4. 한번 기준 학생 정보 삭제 DAO
-	 * @param conn
-	 * @param deleteNo
+	
+	
+	/** 3. 학생 정보(이름, 나이, 전공) 수정 DAO
 	 * @return
+	 */
+	public int selectStd(Connection conn, int inputNo, String inputName)  throws Exception{
+		int stdNo = 0;
+
+		try {
+
+			String sql = """
+					SELECT STD_NO
+					FROM KH_STUDENT
+					WHERE STD_NO = ?
+					AND STD_NAME = ?
+					""";
+
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, inputNo);
+			pstmt.setString(2, inputName);
+
+			rs = pstmt.executeQuery();
+
+			
+			if(rs.next()) {
+
+				stdNo = rs.getInt("STD_NO");
+			}
+
+
+		} finally {
+
+			close(rs);
+
+			close(pstmt);
+
+		}
+
+	
+
+		return stdNo; 
+	}
+	
+	public int updateStd(Connection conn, int inputNo, String stdName, int stdAge, String major) throws Exception{
+		int result = 0;
+		
+
+		try {
+
+			String sql = """
+					UPDATE KH_STUDENT
+					SET STD_NAME = ?
+					AND STD_AGE = ?
+					AND MAJOR = ?
+					WHERE STD_NO = ?
+					""";
+
+			pstmt = conn.prepareStatement(sql);
+
+			
+			pstmt.setString(1, stdName);
+			pstmt.setInt(2, stdAge);
+			pstmt.setString(3, major);
+			pstmt.setInt(4, inputNo);
+
+			result = pstmt.executeUpdate();
+			
+
+		} finally {
+
+			close(pstmt);
+
+		}
+
+		return result;
+	}
+	
+	
+	
+	
+	/** 4. 한번 기준 학생 정보 삭제 DAO
 	 * @throws Exception
 	 */
 	public int deleteStd(Connection conn, int deleteNo) throws Exception{
@@ -120,10 +198,7 @@ public class StudentDAO {
 	}
 
 	/** 5. 전공별 학생 조회 DAO
-	 * @param conn
-	 * @param input
-	 * @return
-	 * @throws Exception
+	 * 
 	 */
 	public List<Student> selectMagor(Connection conn, String input) throws Exception{
 		
@@ -165,5 +240,6 @@ public class StudentDAO {
 		
 		return stdList;
 	}
+
 
 }
