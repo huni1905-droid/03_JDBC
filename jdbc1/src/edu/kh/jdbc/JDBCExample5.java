@@ -66,8 +66,8 @@ public class JDBCExample5 {
 					""";
 			
 			
-			/* *** 위치홀더(?)가 있을 떄 : 무조건 pstmt				 ***
-			 * *** 위치홀더(?)가 없을 떄 : stmt, pstmt 둘 다 가능	 ***
+			/* *** 위치홀더(?)가 있을 때 : 무조건 pstmt				 ***
+			 * *** 위치홀더(?)가 없을 때 : stmt, pstmt 둘 다 가능	 ***
 			 * *** DML / SELECT 가리지 않는다						 ***
 			*/ 
 			

@@ -66,6 +66,11 @@ public class UserDAO {
 		
 		// 결과 저장용 변수에 저장된 최종 값 반환
 		return result; // *** 가장 중요!!! ***
+		
+		
+		
+		
+		
 	}
 
 	/** 2. User 전체 조회 DAO
@@ -85,7 +90,7 @@ public class UserDAO {
 						TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일"') ENROLL_DATE
 						FROM TB_USER
 						ORDER BY USER_NO
-						"""; // *** 디비버에 작성하고 갖고올때 마지막 ; 도 같이 복사해서 오지 않기!!! ***
+						"""; // *** 디비버에 작성하고 갖고올때 마지막 ; 도 같이 복사해서 오지 않게 주의!!! ***
 			
 			// 3. PreparedStatement 생성
 			pstmt =conn.prepareStatement(sql);
